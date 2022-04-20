@@ -1,7 +1,5 @@
 package comAdressBook;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Adress_book {
@@ -41,13 +39,12 @@ public class Adress_book {
 		System.out.print("\nEnter Zip  : ");
 		int zip = sc.nextInt();
 		contact.setZip(zip);
-		showContact(contact);
-		
+		displayContact(contact);
+		sc.close();
 
 	}
 
-	public void showContact(Contact_Info contact) {
-
+	public void displayContact(Contact_Info contact) {
 		System.out.print("\n-----------------");
 		System.out.print("\nFirst Name  : " + contact.getFirstName());
 		System.out.print("\nLast Name   : " + contact.getLastName());
@@ -57,12 +54,12 @@ public class Adress_book {
 		System.out.print("\nPhone Number : " + contact.getPhoneNo());
 		System.out.print("\nE-mail      : " + contact.getEmail());
 		System.out.print("\nZip         : " + contact.getZip());
-
+		
 	}
 
 	public static void main(String[] args) {
 
-		Adress_book book = new Adress_book ();
-		book.contact();
+		Adress_book ad = new Adress_book ();
+		ad.contact();
 	}
 }

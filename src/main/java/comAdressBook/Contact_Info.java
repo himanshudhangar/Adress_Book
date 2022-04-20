@@ -1,9 +1,10 @@
 package comAdressBook;
 
 public class Contact_Info {
-	 String firstName, lastName, address, city, state, email;
-	    int zip;
-	    long phoneNo;
+	
+	String firstName, lastName, address, city, state, email;
+	int zip;
+	long phoneNo;
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -68,5 +69,4 @@ public class Contact_Info {
 	public String getEmail() {
 		return email;
 	}
-
 }
