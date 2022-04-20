@@ -1,67 +1,94 @@
 package comAdressBook;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Adress_book {
 	
-	static Scanner sc = new Scanner(System.in);
-    static List<Contact_Info> list = new LinkedList<Contact_Info>();
+    static Scanner sc=new Scanner(System.in);
+    private static ArrayList<Contact_Info> contactList = new ArrayList<Contact_Info>();
 
-	public static void contactAdd() {
+    public Adress_book(String firstname, String lastname, String address, String city, String state, int zip, long phonenumber, String email) {
+        super();
+    }
 
-		System.out.println("Enter your firstName : ");
-        String firstName = sc.nextLine();
-        System.out.println("Enter your lastName : ");
-        String lastName = sc.nextLine();
-        System.out.println("Enter your address : ");
-        String address = sc.nextLine();
-        System.out.println("Enter your city : ");
-        String city = sc.nextLine();
-        System.out.println("Enter your state : ");
-        String state = sc.nextLine();
-        System.out.println("Enter your pin : ");
-        String pin = sc.nextLine();
-        System.out.println("Enter your MobileNo : ");
-        String MobileNo = sc.nextLine();
-        System.out.println("Enter your email : ");
-        String email = sc.nextLine();
-        Contact_Info obj = new Contact_Info(firstName, lastName, city, state, pin, MobileNo, email);
-        list.add(obj);
+    public Adress_book() {
+        super();
+    }
+    
+    public void insertContact(Contact_Info contactDetailObject) {
 
-	}
-
+        contactList.add(contactDetailObject);
+    }
+    
 	
 	
-	public static void contactEdit()
+	
+	public static void contactEdit(String nameToEdit)
     {
         
-        System.out.println("Enter first name for confirmation : ");
-        String Name = sc.nextLine();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getFirstName().equalsIgnoreCase(Name))
-            {
-                list.remove(i);
-                contactAdd();
-                System.out.println("Successfully Edit data");
+		 for(Contact_Info editContact: contactList) {
+	            if(editContact.getFirstName().equals(nameToEdit)) {
+
+	                System.out.println("Edit Firstname : ");
+	                String firstname = sc.nextLine();
+	                editContact.setFirstName(firstname);
+
+	                System.out.println("Edit Lastname : ");
+	                String lastname = sc.nextLine();
+	                editContact.setLastName(lastname);
+
+	                System.out.println("Edit Address : ");
+	                String address = sc.nextLine();
+	                editContact.setAddress(address);
+
+	                System.out.println("Edit City : ");
+	                String city = sc.nextLine();
+	                editContact.setCity(city);
+
+	                System.out.println("Edit State : ");
+	                String state = sc.nextLine();
+	                editContact.setState(state);
+
+	                System.out.println("Edit Zip : ");
+	                int zip = sc.nextInt();
+	                editContact.setZip(zip);
+
+	                System.out.println("Edit PhoneNumber : ");
+	                long phonenumber = sc.nextLong();
+	                sc.nextLine();
+	                editContact.setPhoneNo(phonenumber);
+
+	                System.out.println("Edit Email : ");
+	                String email = sc.nextLine();
+	                editContact.setEmail(email);
+	            }
+	        }
+    }
+
+	
+	public void delete(String nameToDelete) {
+        int i=0;
+        for(i=0;i<contactList.size();i++) {
+            if(contactList.get(i).firstname.equals(nameToDelete)) {
+                contactList.remove(i);
+                System.out.println("Contact is Deleted");
             }
             else {
-                System.out.println("No data found in Address Book");
+                System.out.println("Contact not found!");
             }
         }
     }
-
-	public static void main(String[] args) {
-
-		Adress_book ad = new Adress_book ();
-		System.out.println("Welcome to AddressBook");
-        
-        System.out.println("Enter details of new contact");
-        contactAdd();
-        
-        contactEdit();
-
-        System.out.println(list);
-	}
+	public void printContactDetails() {
+        for(Contact_Info getInfo: contactList) {
+            System.out.println("Firstname : " + getInfo.getFirstName());
+            System.out.println("Lastname : " + getInfo.getLastName());
+            System.out.println("Address : " + getInfo.getAddress());
+            System.out.println("City : " + getInfo.getCity());
+            System.out.println("State : " + getInfo.getState());
+            System.out.println("Zip : " + getInfo.getZip());
+            System.out.println("PhoneNumber : " + getInfo.getPhoneNo());
+            System.out.println("Email : " + getInfo.getEmail());
+        }
+    }
 }
